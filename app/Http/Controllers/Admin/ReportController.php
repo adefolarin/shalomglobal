@@ -95,7 +95,7 @@ class ReportController extends Controller
                     $fileName = time() . '.' . $docFile->getClientOriginalExtension();
                     // Move the uploaded file to the storage directory
                     //$videoFile->storeAs('public/admin/videos/banners', $fileName);
-                    $docFile->storeAs('admin/docs/reports', $fileName);
+                    $docFile->storeAs('public/admin/docs/reports', $fileName);
                     //$videoFile->store()
                  }
               
@@ -175,7 +175,7 @@ class ReportController extends Controller
                     $fileName = time() . '.' . $docFile->getClientOriginalExtension();
                     // Move the uploaded file to the storage directory
                     //$videoFile->storeAs('public/admin/videos/banners', $fileName);
-                    $docFile->storeAs('admin/docs/reports', $fileName);
+                    $docFile->storeAs('public/admin/docs/reports', $fileName);
                     //$videoFile->store()
                 } else {
                     $fileName = $data['currentreports_file'];

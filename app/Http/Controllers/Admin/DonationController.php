@@ -114,7 +114,8 @@ class DonationController extends Controller
               }
            }
         } else {
-           return redirect()->route('donation-cancel');
+          // return redirect()->route('donation-cancel');
+          return redirect('donation')->with('error_message','Payment is cancelled');
         }
     }
 
@@ -140,9 +141,9 @@ class DonationController extends Controller
          $donation->donations_date = date("Y-m-d");
          $donation->save();
 
-          //return redirect('/donationsuccess')->with('success_message','Payment is succesfull');
+          return redirect('donation')->with('success_message','Payment is succesfull');
 
-          return redirect()->back()->with('success_message','Payment is succesfull');
+          //return redirect()->back()->with('success_message','Payment is succesfull');
         
           //return "Payment is succesfull";
 
@@ -154,14 +155,17 @@ class DonationController extends Controller
           unset($_SESSION['dontions_amount']);
   
       } else {
-          return redirect()->route('donation-cancel');
+          //return redirect()->route('donation-cancel');
+          return redirect('donation')->with('error_message','Payment is cancelled');
+
       }
     }
 
     public function cancel() {
 
         //return redirect('/donationcancel')->with('success_message','Payment is succesfull');
-        return redirect()->back()->with('error_message', 'Payment is cancelled');
+        //return redirect()->back()->with('error_message', 'Payment is cancelled');
+        return redirect('donation')->with('error_message','Payment is cancelled');
         //return "Payment is cancelled";
     }
 

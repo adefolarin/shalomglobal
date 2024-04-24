@@ -96,7 +96,7 @@ class ConditionController extends Controller
                 $fileName = time() . '.' . $docFile->getClientOriginalExtension();
                 // Move the uploaded file to the storage directory
                 //$videoFile->storeAs('public/admin/videos/banners', $fileName);
-                $docFile->storeAs('admin/docs/conditions', $fileName);
+                $docFile->storeAs('public/admin/docs/conditions', $fileName);
                 //$videoFile->store()
             } else {
                 $fileName = "";
@@ -108,7 +108,7 @@ class ConditionController extends Controller
                 $fileName2 = time() . '.' . $docFile2->getClientOriginalExtension();
                 // Move the uploaded file to the storage directory
                 //$videoFile->storeAs('public/admin/videos/banners', $fileName);
-                $docFile2->storeAs('admin/docs/conditions', $fileName2);
+                $docFile2->storeAs('public/admin/docs/conditions', $fileName2);
                 //$videoFile->store()
             } else {
                 $fileName2 = "";

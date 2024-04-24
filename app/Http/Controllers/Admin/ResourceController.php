@@ -97,7 +97,7 @@ class ResourceController extends Controller
                     $fileName = time() . '.' . $docFile->getClientOriginalExtension();
                     // Move the uploaded file to the storage directory
                     //$videoFile->storeAs('public/admin/videos/banners', $fileName);
-                    $docFile->storeAs('admin/docs/resources', $fileName);
+                    $docFile->storeAs('public/admin/docs/resources', $fileName);
                     //$videoFile->store()
                  }
               
@@ -177,7 +177,7 @@ class ResourceController extends Controller
                     $fileName = time() . '.' . $docFile->getClientOriginalExtension();
                     // Move the uploaded file to the storage directory
                     //$videoFile->storeAs('public/admin/videos/banners', $fileName);
-                    $docFile->storeAs('admin/docs/resources', $fileName);
+                    $docFile->storeAs('public/admin/docs/resources', $fileName);
                     //$videoFile->store()
                 } else {
                     $fileName = $data['currentresources_file'];

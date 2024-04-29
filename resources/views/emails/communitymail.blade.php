@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>KCCC Volunteer</title>
+    <title>Shalom Global Volunteer</title>
 </head>
 <body>
      <h4>{{ $mailData['title'] }}</h4>

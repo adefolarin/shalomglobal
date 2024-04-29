@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>KCCC</title>
+    <title>Shalom Global</title>
 </head>
 <body>
     <h3>{{ $mailData['eventname'] }}</h3>

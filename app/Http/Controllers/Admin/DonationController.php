@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Donation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Mail\DonationMail;
+use App\Mail\DonationAdminMail;
 use Mail;
-use App\Mail\SampleMail;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 
@@ -141,7 +142,24 @@ class DonationController extends Controller
          $donation->donations_date = date("Y-m-d");
          $donation->save();
 
+         $mailData = [
+          'title' => 'Donation Received',
+          'body' => 'Thank you for your donation. This will be used for your tax filling.',
+        ];
+
+        $mailData2 = [
+          'title' => 'Donation Alert',
+          'body' => $donation->donations_name . ' has made a donation',
+        ];
+
+        
+          Mail::to($donation->donations_email)->send(new DonationMail($mailData));
+          Mail::to('info@shalomglobalmedicalmission.org')->send(new DonationAdminMail($mailData2));
+
           return redirect('donation')->with('success_message','Payment is succesfull');
+
+
+            
 
           //return redirect()->back()->with('success_message','Payment is succesfull');
         
@@ -153,6 +171,8 @@ class DonationController extends Controller
           unset($_SESSION['dontions_pnum']);
           unset($_SESSION['dontions_type']);
           unset($_SESSION['dontions_amount']);
+
+
   
       } else {
           //return redirect()->route('donation-cancel');

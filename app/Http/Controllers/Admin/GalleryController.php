@@ -95,8 +95,8 @@ class GalleryController extends Controller
                 $image = $manager->read($image_tmp);
                 //$image = $image->resize(60,60);
     
-                ///$storePath = 'admin/img/galleries/';
-                $storePath = public_path('admin/img/galleries/');
+                $storePath = 'admin/img/galleries/';
+                //$storePath = public_path('admin/img/galleries/');
                 //$image->toJpeg(80)->save($storePath . $imageName);
                 $image->save($storePath . $fileName);
                       
@@ -173,8 +173,8 @@ class GalleryController extends Controller
                 $image = $manager->read($image_tmp);
                 //$image = $image->resize(60,60);
     
-                //$storePath = 'admin/img/galleries/';
-                $storePath = public_path('admin/img/galleries/');
+                $storePath = 'admin/img/galleries/';
+                //$storePath = public_path('admin/img/galleries/');
                 //$image->toJpeg(80)->save($storePath . $imageName);
                 $image->save($storePath . $fileName);
                             

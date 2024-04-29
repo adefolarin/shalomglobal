@@ -81,8 +81,25 @@
                             </select> 
                     </div>
                     <div class="col-md-12">
-                            <h5><label>Amount</label></h5>
-                            <input type="text" name="sponsors_amount" class="contuct-us-input" placeholder="Amount" required>                       
+                          <h5 style="display:block;">Select amount</h5><br>
+                          <div class="donate-card">
+                            <div class="causes-card-form-input" style="display:block;">
+                                <ul>
+                                    <li><input type="radio" name="dolor" id="donations_50" 
+                                    onclick="myFunction2()"><span>$ 50</span></li>
+                                    <li><input type="radio" name="dolor" id="donations_100"
+                                    onclick="myFunction2()"><span>$ 100</span></li>
+                                    <li><input type="radio" name="dolor" id="donations_500"
+                                    onclick="myFunction2()"><span>$ 500</span></li>
+                                    <li><input type="radio" name="dolor" id="donations_1000"
+                                    onclick="myFunction2()"><span>$ 1000</span></li>
+                                </ul>
+                            </div>
+                            <h6><label>Enter an Amount If It is different from the one selected above</label></h6>
+                            <input type="text" name="sponsors_amount" class="contuct-us-input" placeholder="Amount" required id="donations_amount2">  
+                           
+                           
+                                             
                     </div>
                     <div class="col-md-12">
                             <h5><label>Password</label></h5>
@@ -103,6 +120,25 @@
             </div>
             </form>
         </section>
+
+        <script>
+            function myFunction2() {
+                if(document.getElementById("donations_50").checked === true) {
+                    document.getElementById("donations_amount2").value = 50;
+                }
+                if(document.getElementById("donations_100").checked === true) {
+                    document.getElementById("donations_amount2").value = 100;
+                }
+                if(document.getElementById("donations_500").checked === true) {
+                    document.getElementById("donations_amount2").value = 500;
+                }
+                if(document.getElementById("donations_1000").checked === true) {
+                    document.getElementById("donations_amount2").value = 1000;
+                }
+            }
+            
+           
+        </script>
 
 
 

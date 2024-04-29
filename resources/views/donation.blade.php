@@ -145,7 +145,7 @@
                                   @if(!Auth::guard('sponsor')->user())
                                     <h5>You Are Donating As Guest</h5>
                                     <span>OR</span>
-                                    <h5> Login <a href="/sponsorlogin" class="btn-1">Here</a> to donate as a sponsor</h5>
+                                    <h5> Login <a href="{{ url('sponsorlogin') }}" class="btn-1">Here</a> to donate as a sponsor</h5>
                                   @else
                                     <h5>You Are Donating As A Sponsor</h5>
                                   @endif
@@ -155,14 +155,21 @@
                             </div>
                         <form method="post" action="{{ url('donation-paypal') }}">@csrf
                         <div class="donate-card">
-                            <h5 style="display:none;">Select the amount:</h5>
-                            <div class="causes-card-form-input" style="display:none;">
+                        @if(!Auth::guard('sponsor')->user())
+                            <h5 style="display:block;">Select amount:</h5>
+                            <div class="causes-card-form-input" style="display:block;">
                                 <ul>
-                                    <li><input type="radio" name="dolor" checked><span>$ 12</span></li>
-                                    <li><input type="radio" name="dolor"><span>$ 50</span></li>
-                                    <li><input type="radio" name="dolor"><span>$ 100</span></li>
+                                    <li><input type="radio" name="dolor" id="donations_50" 
+                                    onclick="myFunction()"><span>$ 50</span></li>
+                                    <li><input type="radio" name="dolor" id="donations_100"
+                                    onclick="myFunction()"><span>$ 100</span></li>
+                                    <li><input type="radio" name="dolor" id="donations_500"
+                                    onclick="myFunction()"><span>$ 500</span></li>
+                                    <li><input type="radio" name="dolor" id="donations_1000"
+                                    onclick="myFunction()"><span>$ 1000</span></li>
                                 </ul>
                             </div>
+                         @endif
                             <div class="donate-card">
                             
                             <div class="row">
@@ -201,14 +208,14 @@
                                 </div>
                             </div>
                         </div>
-                            <h5>Enter Amount($)</h5>
+                            <h5>(Optional)Enter Other Amount($)</h5>
 
                             <div class="news_letter causes-form-group">
                                 <div class="form-group">
                                   @if(!Auth::guard('sponsor')->user())
-                                    <input type="text" name="donations_amount" placeholder="Enter The Donation Amount" class="form-control" style="padding:17px" required>
+                                    <input type="text" name="donations_amount" placeholder="Enter The Donation Amount" class="form-control" style="padding:17px" required id="donations_amount">
                                   @else
-                                    <input type="text" name="donations_amount" class="form-control" style="padding:17px" required value="{{Auth::guard('sponsor')->user()->sponsors_amount}}" readonly>
+                                    <input type="text" name="donations_amount" class="form-control" style="padding:17px" required value="{{Auth::guard('sponsor')->user()->sponsors_amount}}" readonly id="donations_amount">
                                   @endif
 
                                     <div class="news-form-btn donate-lg-btn">
@@ -280,6 +287,26 @@
             </div>
         </section>
         <!-- causes -->
+
+
+        <script>
+            function myFunction() {
+                if(document.getElementById("donations_50").checked === true) {
+                    document.getElementById("donations_amount").value = 50;
+                }
+                if(document.getElementById("donations_100").checked === true) {
+                    document.getElementById("donations_amount").value = 100;
+                }
+                if(document.getElementById("donations_500").checked === true) {
+                    document.getElementById("donations_amount").value = 500;
+                }
+                if(document.getElementById("donations_1000").checked === true) {
+                    document.getElementById("donations_amount").value = 1000;
+                }
+            }
+            
+           
+        </script>
 
 
 

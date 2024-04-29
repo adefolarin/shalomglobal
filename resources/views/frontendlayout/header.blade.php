@@ -3,7 +3,7 @@
             <div class="menu-backdrop"></div>
             <div class="close-btn"><i class="fas fa-times"></i></div>
             <nav class="menu-box">
-                <div class="nav-logo"><a href="index.php">
+                <div class="nav-logo"><a href="{{ url('/') }}">
                   <img src="{{ asset('frontendassets/assets/images/SGMMlogo.png') }}" alt="logo"></a></div>
                 <div class="menu-outer"><!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header--></div>
                 <div class="contact-info">
@@ -135,7 +135,7 @@
                                             <li><a href="{{ url('contact') }}">Contact Us</a>
                                             </li> 
                                             <li><a href="{{ url('faq') }}">FAQs</a></li>
-                                              <li><a href="{{ url('galllery') }}">Our Gallery</a></li>
+                                              <li><a href="{{ url('gallery') }}">Our Gallery</a></li>
                                               <li><a href="{{ url('resource') }}">Resources</a></li>
                                            </ul>
                                           </ul>

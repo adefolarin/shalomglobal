@@ -64,7 +64,8 @@
             <tr>
                 <td>
                     <div class="col-xl-12">  
-                    <form enctype="multipart/form-data" method="post" action="/sponsorupdatedetails">@csrf 
+                    <form enctype="multipart/form-data" method="post" 
+                    action="{{ url('sponsorupdatedetails') }}">@csrf 
                        <div class="col-xl-12"> 
                             <label>Full Name</label>  
                             <br> <br>       
@@ -136,7 +137,8 @@
             <tr>
                 <td>
                     <div class="col-xl-12">  
-                    <form enctype="multipart/form-data" method="post" action="/sponsorupdateemail">@csrf  
+                    <form enctype="multipart/form-data" method="post" 
+                    action="{{ url('sponsorupdateemail') }}">@csrf  
                         <div class="col-xl-12">           
                             <input type="email" name="sponsors_email" class="contuct-us-input" 
                             required value=" {{ Auth::guard('sponsor')->user()->sponsors_email }}">
@@ -167,7 +169,8 @@
             <tr>
                 <td>
                     <div class="col-xl-12">  
-                    <form enctype="multipart/form-data" method="post" action="/sponsorupdatepassword">@csrf 
+                    <form enctype="multipart/form-data" method="post" 
+                    action="{{ url('sponsorupdatepassword') }}">@csrf 
                        <div class="col-xl-12"> 
                             <label>Current Password</label>  
                             <br> <br>       

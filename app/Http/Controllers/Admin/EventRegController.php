@@ -8,7 +8,8 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Mail;
-use App\Mail\SampleMail;
+use App\Mail\EventRegMail;
+use App\Mail\EventRegMailUser;
 
 class EventRegController extends Controller
 {
@@ -65,7 +66,8 @@ class EventRegController extends Controller
                     'eventregs_name' => 'required',
                     'eventregs_email' => 'required',
                     'eventregs_pnum' => 'required',
-                    'evetregs_availtime' => 'required',
+                    'eventregs_availtime' => 'required',
+                    
                     
                 ];
                 $customMessages = [
@@ -74,6 +76,7 @@ class EventRegController extends Controller
                     'eventregs_email.required' => 'Email is required',
                     'eventregs_pnum.required' => 'Phone Number is required',
                     'eventregs_availtime.required' => 'Time of Availability is required',
+                 
                 ];
                      
 

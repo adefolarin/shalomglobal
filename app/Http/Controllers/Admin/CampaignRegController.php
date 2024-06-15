@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Mail;
 use App\Mail\CampaignRegMail;
+use App\Mail\CampaignRegMailUser;
 
 class CampaignRegController extends Controller
 {

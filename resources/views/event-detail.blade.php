@@ -67,7 +67,7 @@
                                         <label>Time of Availability</label>
                                         <select class="contuct-us-input" name="eventregs_availtime">
                                             @foreach($eventschedulers as $eventscheduler) 
-                                              <option>{{$eventscheduler['eventschedulers_time']}}</option>
+                                              <option value="{{$eventscheduler['eventschedulers_time']}}">{{$eventscheduler['eventschedulers_time']}}</option>
                                             @endforeach
                                         </select>
                                         <button type="submit" class="btn-1">Join <span></span></button>

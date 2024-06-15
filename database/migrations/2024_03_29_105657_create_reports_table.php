@@ -21,7 +21,7 @@ return new class extends Migration
                 $table->date('reports_date');
                 $table->timestamps();
             });
-            }
+        }
     }
 
     /**

@@ -65,6 +65,7 @@ class CampaignRegController extends Controller
                     'campaignregs_name' => 'required',
                     'campaignregs_email' => 'required',
                     'campaignregs_pnum' => 'required',
+                    'campaignregs_availtime' => 'required',
                     
                 ];
                 $customMessages = [
@@ -72,6 +73,7 @@ class CampaignRegController extends Controller
                     'campaignregs_name.required' => 'Name is required',
                     'campaignregs_email.required' => 'Email is required',
                     'campaignregs_pnum.required' => 'Phone Number is required',
+                    'campaignregs_availtime.required' => 'Time of Availability is required',
                 ];
                      
 
@@ -93,6 +95,7 @@ class CampaignRegController extends Controller
                 'campaignregs_name' => $data['campaignregs_name'],
                 'campaignregs_email' => $data['campaignregs_email'],
                 'campaignregs_pnum' => $data['campaignregs_pnum'],
+                'campaignregs_availtime' => $data['campaignregs_availtime'],
                 'campaignregs_date' => date("Y-m-d"),
 
                ]
@@ -104,8 +107,19 @@ class CampaignRegController extends Controller
                 'body' => 'The above person has registered for the campaign.'
                ];
 
+               $mailData2 = [
+                'title' => 'Medical Outreach Registration',
+                'name' => $data['eventregs_name'],
+                'campaignname' => $campaignone->campaigns_title,
+                'campaigndate' => $campaignone->campaigns_date,
+                'campaignavailtime' => $data['campaignregs_availtime'],
+                'body' => 'You have successfully registered for the above medical outreach.'
+               ];
+
+
               
                 if(Mail::to('adefolarin2017@gmail.com')->send(new CampaignRegMail($mailData))) {
+                    Mail::to($data['campaignregs_email'])->send(new CampaignRegMailUser($mailData2));
                     $campaignreg->insert($store);
                 }
                 return redirect('campaign/'.$data['campaignregs_campaign'])->with('success_message', $message);

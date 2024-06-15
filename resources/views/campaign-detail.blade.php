@@ -63,6 +63,13 @@
                                         <input type="text" placeholder="Your Name" name="campaignregs_name" required>
                                         <input type="email" placeholder="Your Email" name="campaignregs_email" required>
                                         <input type="text" placeholder="Your Phone Number" name="campaignregs_pnum" required>
+                                        <br></br>
+                                        <label>Time of Availability</label>
+                                        <select class="contuct-us-input" name="campaignregs_availtime">
+                                            @foreach($campaignschedulers as $campaignscheduler) 
+                                              <option>{{$campaignscheduler['campaignschedulers_time']}}</option>
+                                            @endforeach
+                                        </select>
                                         <button type="submit" class="btn-1">Join <span></span></button>
                                     </form>
                                 </div>

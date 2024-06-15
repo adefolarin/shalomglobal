@@ -262,6 +262,20 @@
             </a>
           </li>
 
+          @if(Session::get('page') == "eventscheduler")
+             @php $active = "active" @endphp
+          @else
+             @php $active = "" @endphp
+          @endif
+          <li class="nav-item">
+            <a href="{{ url('admin/eventscheduler') }}" class="nav-link {{ $active }}">
+              <i class="nav-icon fas fa-image"></i>
+              <p>
+                Event Scheduler
+              </p>
+            </a>
+          </li>
+
           @if(Session::get('page') == "campaigns")
              @php $active = "active" @endphp
           @else
@@ -272,6 +286,20 @@
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Medical Outreach
+              </p>
+            </a>
+          </li>
+
+          @if(Session::get('page') == "campaignscheduler")
+             @php $active = "active" @endphp
+          @else
+             @php $active = "" @endphp
+          @endif
+          <li class="nav-item">
+            <a href="{{ url('admin/campaignscheduler') }}" class="nav-link {{ $active }}">
+              <i class="nav-icon fas fa-image"></i>
+              <p>
+                Campaign Scheduler
               </p>
             </a>
           </li>

@@ -65,6 +65,7 @@ class EventRegController extends Controller
                     'eventregs_name' => 'required',
                     'eventregs_email' => 'required',
                     'eventregs_pnum' => 'required',
+                    'evetregs_availtime' => 'required',
                     
                 ];
                 $customMessages = [
@@ -72,6 +73,7 @@ class EventRegController extends Controller
                     'eventregs_name.required' => 'Name is required',
                     'eventregs_email.required' => 'Email is required',
                     'eventregs_pnum.required' => 'Phone Number is required',
+                    'eventregs_availtime.required' => 'Time of Availability is required',
                 ];
                      
 
@@ -93,6 +95,7 @@ class EventRegController extends Controller
                 'eventregs_name' => $data['eventregs_name'],
                 'eventregs_email' => $data['eventregs_email'],
                 'eventregs_pnum' => $data['eventregs_pnum'],
+                'eventregs_availtime' => $data['eventregs_availtime'],
                 'eventregs_date' => date("Y-m-d"),
 
                ]
@@ -104,8 +107,18 @@ class EventRegController extends Controller
                 'body' => 'The above person has registered for the event.'
                ];
 
+               $mailData2 = [
+                'title' => 'Event Registration',
+                'name' => $data['eventregs_name'],
+                'eventname' => $eventone->events_title,
+                'eventdate' => $eventone->events_date,
+                'eventavailtime' => $data['eventregs_availtime'],
+                'body' => 'You have successfully registered for the above event.'
+               ];
+
               
                 if(Mail::to('adefolarin2017@gmail.com')->send(new EventRegMail($mailData))) {
+                    Mail::to($data['eventregs_email'])->send(new EventRegMailUser($mailData2));
                     $eventreg->insert($store);
                 }
                 return redirect('event/'.$data['eventregs_event'])->with('success_message', $message);

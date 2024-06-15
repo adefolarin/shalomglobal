@@ -63,6 +63,13 @@
                                         <input type="text" placeholder="Your Name" name="eventregs_name" required>
                                         <input type="email" placeholder="Your Email" name="eventregs_email" required>
                                         <input type="text" placeholder="Your Phone Number" name="eventregs_pnum" required>
+                                        <br></br>
+                                        <label>Time of Availability</label>
+                                        <select class="contuct-us-input" name="eventregs_availtime">
+                                            @foreach($eventschedulers as $eventscheduler) 
+                                              <option>{{$eventscheduler['eventschedulers_time']}}</option>
+                                            @endforeach
+                                        </select>
                                         <button type="submit" class="btn-1">Join <span></span></button>
                                     </form>
                                 </div>

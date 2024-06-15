@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\EventCategory;
+use App\Models\EventScheduler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
@@ -331,7 +332,9 @@ class EventController extends Controller
             
             //dd($eventcategoryone['eventcategories_name']); die;
             //$events = Event::query()->get()->toArray(); 
-             return view('event-detail')->with(compact('events','eventone','eventcategoryone','eventcategories'));
+             $eventschedulers = EventScheduler::query()->get()->toArray(); 
+
+             return view('event-detail')->with(compact('events','eventone','eventcategoryone','eventcategories','eventschedulers'));
         }
 
 

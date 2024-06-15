@@ -20,6 +20,7 @@ return new class extends Migration
             $table->bigInteger('eventregs_event');
             $table->date('eventregs_date');
             $table->timestamps();
+            $table->bigInteger('eventregs_availtime');
         });
         }
     }

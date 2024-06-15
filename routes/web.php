@@ -50,7 +50,8 @@ use App\Http\Controllers\Admin\CampaignCategoryController;
 use App\Http\Controllers\Admin\CampaignRegController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\NewsLetterController;
-use App\Models\Donation;
+use App\Http\Controllers\Admin\EventSchedulerController;
+use App\Http\Controllers\Admin\CampaignSchedulerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +102,23 @@ Route::get('/', function () {
         //Route::get('/admin/eventcategory/{id?}', [EventCategoryController::class,'edit']);
         Route::post('/admin/eventcategory/{id?}', [EventCategoryController::class,'update']);
         Route::get('/admin/delete-eventcategory/{id?}', [EventCategoryController::class,'destroy']);
+
+        // Event Scheduler
+        Route::get('/admin/eventscheduler/{id?}', [EventSchedulerController::class,'index']);
+        //Route::get('/admin/eventscheduler-add', [EventSchedulerController::class,'create']);
+        Route::post('/admin/eventscheduler', [EventSchedulerController::class,'store']);
+        //Route::get('/admin/eventscheduler/{id?}', [EventSchedulerController::class,'edit']);
+        Route::post('/admin/eventscheduler/{id?}', [EventSchedulerController::class,'update']);
+        Route::get('/admin/delete-eventscheduler/{id?}', [EventSchedulerController::class,'destroy']);
+
+
+        // Campaign Scheduler
+        Route::get('/admin/campaignscheduler/{id?}', [CampaignSchedulerController::class,'index']);
+        //Route::get('/admin/campaignscheduler-add', [CampaignSchedulerController::class,'create']);
+        Route::post('/admin/campaignscheduler', [ECampaignSchedulerController::class,'store']);
+        //Route::get('/admin/campaignscheduler/{id?}', [CampaignSchedulerController::class,'edit']);
+        Route::post('/admin/campaignscheduler/{id?}', [CampaignSchedulerController::class,'update']);
+        Route::get('/admin/delete-campaignscheduler/{id?}', [CampaignSchedulerController::class,'destroy']);
 
         // Campaign Categories
         Route::get('/admin/campaigncategory/{id?}', [CampaignCategoryController::class,'index']);

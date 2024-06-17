@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Mail;
 use App\Mail\EventRegMail;
 use App\Mail\EventRegMailUser;
+use DB;
 
 class EventRegController extends Controller
 {
@@ -23,8 +24,21 @@ class EventRegController extends Controller
           $eventregsnumrw = EventReg::query()->count(); 
           if($eventregsnumrw > 0) {
             $eventone = Event::find($eventregs_event);
-            $eventregs = EventReg::query()->where('eventregs_event',$eventregs_event)->get()->toArray(); 
-            return view('admin.eventreg')->with(compact('eventregs','eventone'));
+            $eventregs = DB::table('eventregs')
+            ->where('eventregs_event',$eventregs_event)
+            ->groupBy('eventregs_availtime')
+            ->get();
+
+            foreach($eventregs as $eventreg) {
+                $eventregsbygroups = DB::table('eventregs')
+                ->where('eventregs_availtime',$eventreg->eventregs_availtime)
+                ->get();
+
+            }
+
+            return view('admin.eventreg')->with(compact('eventregs','eventone','eventregsbygroups'));
+
+
           }
 
 

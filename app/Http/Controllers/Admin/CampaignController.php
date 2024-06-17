@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Campaign;
 use App\Models\CampaignCategory;
+use App\Models\CampaignScheduler;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
@@ -328,10 +329,12 @@ class CampaignController extends Controller
             $campaignone = $campaign->where('campaigns_id', $campaignsid)->first();
 
             $campaigncategoryone = $campaigncategory->where('campaigncategories_id', $campaignone['campaigncategoriesid'])->first(); 
+
+            $campaignschedulers = EventScheduler::query()->get()->toArray(); 
             
             //dd($campaigncategoryone['campaigncategories_name']); die;
             //$campaigns = Campaign::query()->get()->toArray(); 
-             return view('campaign-detail')->with(compact('campaigns','campaignone','campaigncategoryone','campaigncategories'));
+             return view('campaign-detail')->with(compact('campaigns','campaignone','campaigncategoryone','campaigncategories', 'campaignschedulers'));
         }
 
 

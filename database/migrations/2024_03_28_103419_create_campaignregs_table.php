@@ -20,6 +20,7 @@ return new class extends Migration
             $table->bigInteger('campaignregs_campaign');
             $table->date('campaignregs_date');
             $table->timestamps();
+            $table->bigInteger('eventregs_availtime');
         });
         }
     }

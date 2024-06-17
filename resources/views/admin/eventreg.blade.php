@@ -64,6 +64,7 @@
                 <table id="tablepages" class="table table-bordered table-striped">
                   <thead>
                   <tr>
+                    <th>Time of Availability</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone Numeber</th>
@@ -72,20 +73,28 @@
                   </tr>
                   </thead>
                   <tbody> 
-                    @foreach($eventregs as $eventreg)           
-                  <tr>
-                    <td>{{ ucwords($eventreg['eventregs_name']) }}</td>
-                    <td>{{ ucwords($eventreg['eventregs_email']) }}</td>
-                    <td>{{ ucwords($eventreg['eventregs_pnum']) }}</td>
-                    <td>{{ ucwords($eventreg['eventregs_date']) }}</td>
+                    @foreach($eventregs as $eventreg)
+                    <tr>         
+                    <tr>
+                    <td colspan='6'>{{ ucwords($eventreg->eventregs_availtime) }}</td>
+                    </tr>
+                    @foreach($eventregsbygroups as $eventregsbygroup)
+                    <tr>
+                    <td></td>
+                    <td>{{ ucwords($eventregsbygroup->eventregs_name) }}</td>
+                    <td>{{ ucwords($eventregsbygroup->eventregs_email) }}</td>
+                    <td>{{ ucwords($eventregsbygroup->eventregs_pnum) }}</td>
+                    <td>{{ ucwords($eventregsbygroup->eventregs_date) }}</td>
                     <td>                     
                       <a href= "javascript:void(0)" record="eventreg" 
-                      recordid="{{ $eventreg['eventregs_id'] }}" 
-                      eventregs_event="{{ $eventreg['eventregs_event'] }}"   
+                      recordid="{{ $eventregsbygroup->eventregs_id }}" 
+                      eventregs_event="{{ $eventregsbygroup->eventregs_event }}"   
                       style="color:#ee4b2b;" class="confirmEventRegDelete" name="Registered Member" title="Delete The Registered Member">
                         <i class="fas fa-trash"></i>
                       </a> 
                     </td>
+                    </tr>
+                    @endforeach
                     </tr>   
                      @endforeach
                              
